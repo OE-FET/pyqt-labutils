@@ -3,7 +3,7 @@
 
 pyqt-labutils provides widgets for common use cases in scientific GUIs. This includes a
 LED widgets, scientific spin boxes that work with units and prefixes (e.g., "µV") and
-a widget to enter a list of numbers, for instance for points in a sweep.
+a widget to enter a list of numbers, for instance for points in a measurement sweep.
 
 Examples of how the widgets appear in a GUI can be found in
 [keithleygui](https://github.com/OE-FET/keithleygui):
