@@ -3,12 +3,18 @@
 
 pyqt-labutils provides widgets for common use cases in scientific GUIs. This includes a
 LED widgets, scientific spin boxes that work with units and prefixes (e.g., "µV") and
-a widget to enter a list of numbers, for instance for points in a measurement sweep.
+a widget to enter a list of numbers.
+
+Many of those widgets can easily be assembled into a settings widget:
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/OE-FET/pyqt-labutils/master/screenshots/settings_pane.png"
+  alt="settings pane screenshot" width=600/>
+</p>
+
 
 Examples of how the widgets appear in a GUI can be found in
-[keithleygui](https://github.com/OE-FET/keithleygui):
-
-![Screenshot](screenshots/example_ui.png)
+[keithleygui](https://github.com/OE-FET/keithleygui).
 
 ## System requirements
 
