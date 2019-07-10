@@ -26,10 +26,8 @@ Examples of how the widgets appear in a GUI can be found in
 
 ## Installation
 
-Install the latest version from github:
-```console
-$ pip install --update git+https://github.com/OE-FET/pyqt-labutils
-```
+pyqt-labutils is intended to be used as a submodule. Download and save the files to your
+project directory to use them.
 
 ## Acknowledgements
 
