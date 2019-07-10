@@ -11,6 +11,9 @@ from qtpy import QtGui, QtCore, QtWidgets
 
 
 class LedIndicator(QtWidgets.QAbstractButton):
+    """
+
+    """
     scaledSize = 1000.0
 
     def __init__(self, parent=None):

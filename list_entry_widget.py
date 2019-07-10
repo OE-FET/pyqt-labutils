@@ -20,7 +20,7 @@ if not PY2:
 
 class ListValidator(QtGui.QValidator):
     """
-    This is a validator for a list float values.
+    This is a validator for a list of float values.
     """
 
     accepted_strings = []
@@ -78,6 +78,11 @@ class FloatListWidget(QtWidgets.QLineEdit):
     _accepted_strings = []
 
     def __init__(self, *args, **kwargs):
+        """"
+        A QLineEdit which only allows comma separated lists to be entered. By default, the
+        values must be numeric but :func:`setAcceptedStrings` allows the user to set a
+        list of string values which will also be accepted.
+        """
         super(FloatListWidget, self).__init__(*args, **kwargs)
 
         self.validator_ = ListValidator()
@@ -85,13 +90,23 @@ class FloatListWidget(QtWidgets.QLineEdit):
         self.setValidator(self.validator_)
 
     def value(self):
+        """
+        Return the current list of values.
 
+        :return: List of values.
+        :rtype: list
+        """
         text = self.text()
         string_list = text.split(',')
 
         return [self._string_to_value(x) for x in string_list]
 
     def setValue(self, value_list):
+        """
+        Set the current value.
+
+        :param list value_list: List of values.
+        """
 
         string_list = []
 
@@ -110,16 +125,27 @@ class FloatListWidget(QtWidgets.QLineEdit):
 
         self.setText(string)
 
+    def acceptedStrings(self):
+        """
+        Returns a list of accepted strings.
+
+        :return: List of accepted strings.
+        :rtype: list
+        """
+        return self._accepted_strings
+
     def setAcceptedStrings(self, string_list):
+        """
+        Accepts the string given in :param:`string_list` as input values.
+
+        :param list string_list: list of strings.
+        """
 
         if not all([isinstance(x, basestring) for x in string_list]):
             raise ValueError('Input must be a list of strings.')
 
         self._accepted_strings = string_list
         self.validator_.accepted_strings = string_list
-
-    def acceptedStrings(self):
-        return self._accepted_strings
 
     def _string_to_value(self, string):
         try:

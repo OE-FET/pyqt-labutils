@@ -111,3 +111,4 @@ venv.bak/
 .idea/modules.xml
 .idea/vcs.xml
 .idea/workspace.xml
+*.iml

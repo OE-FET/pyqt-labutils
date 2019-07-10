@@ -12,18 +12,34 @@ from qtpy import QtCore, QtWidgets
 
 
 from .scientific_spinbox import ScienSpinBox, ScienDSpinBox
-from .utils.list_entry_widget import FloatListWidget
+from .list_entry_widget import FloatListWidget
 
 
 class SettingsWidget(QtWidgets.QWidget):
 
-    def __init__(self):
-        QtWidgets.QWidget.__init__(self)
+    def __init__(self, parent=None):
+        """
+        A widget to group settings for a scientific instrument or measurement.
+
+        Settings are ordered on a grid with a QLabel which describes the setting on the
+        left and a widget to modify the setting on the right. Currently supported fields
+        are given below.
+        """
+        QtWidgets.QWidget.__init__(self, parent=parent)
 
         self.gridLayout = QtWidgets.QGridLayout(self)
         self.gridLayout.setVerticalSpacing(5)
 
     def addDoubleField(self, name, value, unit=None, limits=None):
+        """
+        Adds a setting to modify a decimal number.
+
+        :param str name: Setting title. Will be displayed as label next to the spin box.
+        :param float value: Initial value.
+        :param str unit: Unit.
+        :param limits: Tuple or list with maximum and minimum value.
+        :return: Instance of :class:`scientific_spinbox.ScienDSpinBox`.
+        """
 
         label = QtWidgets.QLabel(self)
         label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
@@ -47,7 +63,15 @@ class SettingsWidget(QtWidgets.QWidget):
         return spinbox
 
     def addIntField(self, name, value, unit=None, limits=None):
+        """
+        Adds a setting to modify an integer number.
 
+        :param str name: Setting title. Will be displayed as label next to the spin box.
+        :param int value: Initial value.
+        :param str unit: Unit.
+        :param limits: Tuple or list with maximum and minimum value.
+        :return: Instance of :class:`scientific_spinbox.ScienSpinBox`.
+        """
         label = QtWidgets.QLabel(self)
         label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         label.setText(name)
@@ -70,7 +94,14 @@ class SettingsWidget(QtWidgets.QWidget):
         return spinbox
 
     def addSelectionField(self, name, choices, index=0):
+        """
+        Adds a setting to select a value from a combobox.
 
+        :param str name: Setting title. Will be displayed as label next to the combobox.
+        :param list choices: List of strings that indicate choices.
+        :param int index: Default choice.
+        :return: Instance of :class:`PyQt5.QWidgets.QComboBox`.
+        """
         label = QtWidgets.QLabel(self)
         label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
         label.setText(name)
@@ -89,6 +120,13 @@ class SettingsWidget(QtWidgets.QWidget):
         return combobox
 
     def addListField(self, name, value_list):
+        """
+        Adds a setting to enter a list of values.
+
+        :param name: Setting title. Will be displayed as label next to the entry widget.
+        :param list value_list: Initial list of values.
+        :return: Instance of :class:`list_entry_widget.FloatListWidget`.
+        """
 
         label = QtWidgets.QLabel(self)
         label.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)

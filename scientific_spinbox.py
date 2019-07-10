@@ -35,7 +35,7 @@ class ErrorBox(QtWidgets.QWidget):
     """Red outline to draw around lineedit when value is invalid.
     (for some reason, setting border from stylesheet does not work)
     """
-    def __init__(self, parent):
+    def __init__(self, parent=None):
         QtWidgets.QWidget.__init__(self, parent)
         parent.installEventFilter(self)
         self.setAttribute(QtCore.Qt.WA_TransparentForMouseEvents)
