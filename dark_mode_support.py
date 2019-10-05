@@ -1,4 +1,4 @@
-from qtpy import QtWidgets, QtGui, Qt
+from qtpy import QtWidgets, QtGui
 
 
 THEME_DARK = "dark"
