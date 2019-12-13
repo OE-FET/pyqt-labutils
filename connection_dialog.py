@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtWidgets, uic
 
 from .animated_widgets import AnimatedResizeWidget
 
-basedir = osp.abspath(__file__)
+basedir = osp.basename(osp.abspath(__file__))
 CONNECTION_UI_PATH = osp.join(basedir, 'connection_dialog.ui')
 
 
