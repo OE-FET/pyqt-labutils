@@ -165,10 +165,11 @@ class AnimatedStackedWidget(QtWidgets.QStackedWidget):
 
 class AnimatedResizeWidget(QtWidgets.QWidget):
 
-    def animatedResize(self, newGeometry=None, ms_time=300):
+    def animatedResize(self, newGeometry=None, ms_time=200):
         currentGeometry = self.geometry()
         if not newGeometry:
-            newGeometry = self._adjustedSize()
+            newSize = self._adjustedSize()
+            newGeometry = QtCore.QRect(currentGeometry.topLeft(), newSize)
 
         self.animation = QtCore.QPropertyAnimation(self, b"geometry")
         self.animation.setDuration(ms_time)
@@ -181,7 +182,6 @@ class AnimatedResizeWidget(QtWidgets.QWidget):
         s = self.sizeHint()
 
         if self.isWindow():
-            exp = QtCore.Qt.Orientations()
             layout = self.layout()
 
             if layout:
