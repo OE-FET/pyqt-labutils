@@ -52,14 +52,14 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
 
         self.adjustSize()
 
-    @QtCore.Slot()
+    @QtCore.pyqtSlot()
     def populate_ui_from_instr(self):
         is_auto = self.instr.visa_library == ''
         self.checkBoxAutoVisa.setChecked(is_auto)
         self._on_auto_checked(is_auto)
         self._on_search_clicked()  # search for instrument addresses
 
-    @QtCore.Slot(bool)
+    @QtCore.pyqtSlot(bool)
     def _on_auto_checked(self, checked):
         """Switch from automatic to manual visa library selection."""
         if checked:
@@ -75,7 +75,7 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
 
         self.animatedResize()
 
-    @QtCore.Slot()
+    @QtCore.pyqtSlot()
     def _on_choose_clicked(self):
         """Select path to VISA library."""
         prompt = 'Please select a DLL.'
@@ -84,7 +84,7 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
             return
         self.lineEditLibrary.setText(filepath[0])
 
-    @QtCore.Slot()
+    @QtCore.pyqtSlot()
     def _on_search_clicked(self):
         # set Address comboBox status
         self.comboBoxAddress.clear()
@@ -92,7 +92,7 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
         self.comboBoxAddress.addItems(self.instr.rm.list_resources())
         self.comboBoxAddress.setCurrentIndex(0)
 
-    @QtCore.Slot()
+    @QtCore.pyqtSlot()
     def _on_accept(self):
         """ Update connection settings, reconnect with new settings."""
         self.instr.visa_library = self.lineEditLibrary.text()
@@ -123,7 +123,7 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
 
         self.instr.connect()
 
-    @QtCore.Slot()
+    @QtCore.pyqtSlot()
     def _on_help_clicked(self):
         """Show dialog box with help."""
 
