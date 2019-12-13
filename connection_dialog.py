@@ -12,11 +12,13 @@ import visa
 import pyvisa
 from PyQt5 import QtCore, QtWidgets, uic
 
+from .animated_widgets import AnimatedResizeWidget
+
 basedir = osp.abspath(__file__)
 CONNECTION_UI_PATH = osp.join(basedir, 'connection_dialog.ui')
 
 
-class ConnectionDialog(QtWidgets.QDialog):
+class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
     """
     Class to manage to VISA connection to an instrument.
 
@@ -71,7 +73,7 @@ class ConnectionDialog(QtWidgets.QDialog):
             self.pushButtonChoose.show()
             self.lineEditLibrary.setText(self.instr.visa_library)
 
-        self.adjustSize()
+        self.animatedResize()
 
     @QtCore.Slot()
     def _on_choose_clicked(self):
