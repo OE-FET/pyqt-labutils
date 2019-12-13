@@ -165,6 +165,9 @@ class AnimatedStackedWidget(QtWidgets.QStackedWidget):
 
 class AnimatedResizeWidget(QtWidgets.QWidget):
 
+    def adjustSize(self):
+        self.animatedResize()
+
     def animatedResize(self, newGeometry=None, ms_time=200):
         currentGeometry = self.geometry()
         if not newGeometry:

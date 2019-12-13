@@ -73,7 +73,7 @@ class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
             self.pushButtonChoose.show()
             self.lineEditLibrary.setText(self.instr.visa_library)
 
-        self.animatedResize()
+        self.adjustSize()
 
     @QtCore.pyqtSlot()
     def _on_choose_clicked(self):
