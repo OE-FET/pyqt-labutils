@@ -12,13 +12,11 @@ import visa
 import pyvisa
 from PyQt5 import QtCore, QtWidgets, uic
 
-from .animated_widgets import AnimatedResizeWidget
-
 basedir = osp.dirname(osp.abspath(__file__))
 CONNECTION_UI_PATH = osp.join(basedir, 'connection_dialog.ui')
 
 
-class ConnectionDialog(QtWidgets.QDialog, AnimatedResizeWidget):
+class ConnectionDialog(QtWidgets.QDialog):
     """
     Class to manage to VISA connection to an instrument.
 
