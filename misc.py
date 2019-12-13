@@ -6,10 +6,6 @@ Created on Wed Oct 31 16:23:13 2018
 @author: samschott
 """
 
-# system imports
-import os
-
-# external packages
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QRect
 from PyQt5.QtGui import QBrush, QImage, QPainter, QPixmap, QWindow
