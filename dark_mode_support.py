@@ -1,4 +1,3 @@
-from qtpy import QtWidgets, QtGui
 # !/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
@@ -8,6 +7,7 @@ from qtpy import QtWidgets, QtGui
 Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales License.
 
 """
+from PyQt5 import QtWidgets, QtGui
 
 
 THEME_DARK = "dark"

@@ -8,8 +8,7 @@ Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales License.
 
 """
 
-from __future__ import division, print_function, absolute_import
-from qtpy import QtCore, QtWidgets
+from PyQt5 import QtCore, QtWidgets
 
 
 from .scientific_spinbox import ScienSpinBox, ScienDSpinBox

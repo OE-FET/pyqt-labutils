@@ -6,8 +6,7 @@
 Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales License.
 
 """
-from __future__ import division, absolute_import, print_function
-from qtpy import QtGui, QtCore, QtWidgets
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 
 class LedIndicator(QtWidgets.QAbstractButton):

@@ -7,15 +7,7 @@ Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales License.
 
 """
 
-from __future__ import division, absolute_import, print_function
-import sys
-from qtpy import QtGui, QtCore, QtWidgets
-
-
-PY2 = sys.version[0] == '2'
-
-if not PY2:
-    basestring = str  # in Python 3
+from PyQt5 import QtGui, QtWidgets
 
 
 class ListValidator(QtGui.QValidator):
@@ -141,7 +133,7 @@ class FloatListWidget(QtWidgets.QLineEdit):
         :param list string_list: list of strings.
         """
 
-        if not all([isinstance(x, basestring) for x in string_list]):
+        if not all([isinstance(x, str) for x in string_list]):
             raise ValueError('Input must be a list of strings.')
 
         self._accepted_strings = string_list

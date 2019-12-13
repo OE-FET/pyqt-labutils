@@ -16,11 +16,8 @@ You should have received a copy of the GNU General Public License
 along with Qudi. If not, see <http://www.gnu.org/licenses/>.
 """
 
-from __future__ import division, absolute_import, unicode_literals
 import sys
-# noinspection PyCompatibility
-from builtins import super
-from qtpy import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
 import numpy as np
 import re
 from decimal import Decimal as D  # Use decimal to avoid accumulating floating-point errors
@@ -224,8 +221,8 @@ class ScienDSpinBox(QtWidgets.QAbstractSpinBox):
     header file and use the name of the present class.
     """
 
-    valueChanged = QtCore.Signal(object)
-    returnPressed = QtCore.Signal()
+    valueChanged = QtCore.pyqtSignal(object)
+    returnPressed = QtCore.pyqtSignal()
 
     # The maximum number of decimals to allow. Be careful when changing this number since
     # the decimal package has by default a limited accuracy.
@@ -1006,8 +1003,8 @@ class ScienSpinBox(QtWidgets.QAbstractSpinBox):
     header file and use the name of the present class.
     """
 
-    valueChanged = QtCore.Signal(object)
-    returnPressed = QtCore.Signal()
+    valueChanged = QtCore.pyqtSignal(object)
+    returnPressed = QtCore.pyqtSignal()
     # Dictionary mapping the si-prefix to a scaling factor as integer (exact value)
     _unit_prefix_dict = {
         '': 1,
@@ -1385,7 +1382,7 @@ class ScienSpinBox(QtWidgets.QAbstractSpinBox):
 
         value = self.valueFromText(text)
         _, in_range = self.check_range(value)
-        self.error.setVisible(not in_range)
+        self.errorBox.setVisible(not in_range)
 
         return state, text, position
 
@@ -1444,6 +1441,7 @@ class ScienSpinBox(QtWidgets.QAbstractSpinBox):
         value_str = str(abs(value))
 
         # find out the index of the least significant non-zero digit
+        digit_index = 0
         for digit_index in range(len(value_str)):
             if value_str[digit_index:].count('0') == len(value_str) - digit_index:
                 break
