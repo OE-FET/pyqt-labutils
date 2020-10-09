@@ -8,7 +8,6 @@ Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales License.
 
 """
 import os.path as osp
-import visa
 import pyvisa
 from PyQt5 import QtCore, QtWidgets, uic
 
@@ -23,7 +22,7 @@ class ConnectionDialog(QtWidgets.QDialog):
     The given instrument `inst` must implement the following interface: it must have the
     attributes `visa_library` and `visa_address`, the methods `connect` and `disconnect`,
     the attribute `connected` and the attribute `rm` which must be an instance of
-    :class:`visa.ResourceManager`.
+    :class:`pyvisa.ResourceManager`.
 
     If a config instance `conf` is given, it is used to store the Visa library and
     address.
@@ -107,7 +106,7 @@ class ConnectionDialog(QtWidgets.QDialog):
         self.instr.rm.close()
 
         try:
-            self.instr.rm = visa.ResourceManager(self.instr.visa_library)
+            self.instr.rm = pyvisa.ResourceManager(self.instr.visa_library)
 
         except ValueError:
             msg = ('Could not find backend %s.\n' % self.lineEditLibrary.text() +
@@ -115,7 +114,7 @@ class ConnectionDialog(QtWidgets.QDialog):
             QtWidgets.QMessageBox.information(self, str('error'), msg)
 
             self.instr.visa_library = ''
-            self.instr.rm = visa.ResourceManager()
+            self.instr.rm = pyvisa.ResourceManager()
 
             self.populate_ui_from_instr()
 
